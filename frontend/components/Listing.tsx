@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
 

@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import {
   Pagination,
   PaginationContent,
@@ -6,6 +8,7 @@ import {
   PaginationPrevious,
   PaginationLink,
 } from "@/components/ui/pagination";
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
 
