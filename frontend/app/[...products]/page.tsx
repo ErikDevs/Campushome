@@ -7,6 +7,7 @@ import {
   PaginationLink,
 } from "@/components/ui/pagination";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import Image from "next/image";
 
 interface Product {
   id: number;
@@ -37,7 +38,6 @@ const fetchProducts = async (
 export default async function ProductsPage({
   searchParams,
 }: {
-  params: { slug: string[] };
   searchParams?: { page?: string };
 }) {
   const currentPage = Number(searchParams?.page || "1");
@@ -61,7 +61,7 @@ export default async function ProductsPage({
         {products.map((product) => (
           <Card key={product.id} className="hover:shadow-lg transition-shadow">
             <CardHeader>
-              <img
+              <Image
                 src={product.images[0] || "/placeholder-product.jpg"}
                 alt={product.title}
                 className="rounded-md object-cover w-full h-48"

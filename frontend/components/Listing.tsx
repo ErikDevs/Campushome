@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import Image from "next/image";
 
 interface Product {
   id: number;
@@ -41,7 +42,7 @@ export default async function Listing({
         {products.map((product) => (
           <Card key={product.id}>
             <CardHeader>
-              <img
+              <Image
                 src={product.images[0] || "/placeholder-product.jpg"}
                 alt={product.title}
                 width={200}
