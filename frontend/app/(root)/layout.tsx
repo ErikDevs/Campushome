@@ -1,13 +1,7 @@
-import { MainNav } from "@/components/header";
 import React, { ReactNode } from "react";
 
 const layout = ({ children }: { children: ReactNode }) => {
-  return (
-    <div>
-      <MainNav />
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 };
 
 export default layout;

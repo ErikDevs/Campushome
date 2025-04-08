@@ -3,79 +3,76 @@
 
 import Link from "next/link";
 import { useState } from "react";
-
-import { LogIn, LogOut, Menu, Settings, UserRoundPlus } from "lucide-react";
 import {
   NavigationMenu,
+  NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  navigationMenuTriggerStyle,
+  NavigationMenuTrigger,
 } from "./ui/navigation-menu"; // Update the path if the file is located elsewhere
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Button } from "./ui/button";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignOutButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
 import SearchItem from "./Search";
 import { ThemeToggle } from "./ToggleTheme";
+import { LogIn, Menu } from "lucide-react";
+import { useSession } from "next-auth/react";
+import UserProfile from "./User";
+import Image from "next/image";
 
 export function MainNav() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const { data: session } = useSession();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="max-w-7xl px-6 flex justify-between w-full mx-auto h-14 items-center">
+      <div className="container px-6 flex justify-between w-full mx-auto h-14 items-center">
         {/* Desktop Navigation */}
         <div className="hidden md:flex justify-between w-full">
-          <NavigationMenu className="flex-1">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <Link href="/">
+                <NavigationMenuItem>
+                  <span className="flex items-center gap-2">
+                    <Image src="/logo.png" alt="logo" width={32} height={32} />
+                    <h2 className="font-bold">myCampus Home</h2>
+                  </span>
+                </NavigationMenuItem>
+              </Link>
+            </NavigationMenuList>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="/">
-                  <h2 className="font-bold">myCampus Home</h2>
-                </Link>
+                <NavigationMenuTrigger className="mx-2">
+                  Category
+                </NavigationMenuTrigger>
+                <NavigationMenuContent></NavigationMenuContent>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-
-          <NavigationMenu className="flex-1">
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    About
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Contact
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
+          <NavigationMenu>
             <SearchItem />
           </NavigationMenu>
-          <NavigationMenu className="flex gap-3 flex-1">
-            <SignedOut>
-              <div className="text-sm flex gap-1 items-center font-semibold">
-                <LogIn size={16} />
-                <SignInButton />
-              </div>
-              <Button>
-                <SignUpButton />
-              </Button>
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-            <ThemeToggle />
+          <NavigationMenu>
+            <NavigationMenuList>
+              {session ? (
+                <UserProfile />
+              ) : (
+                <div className="flex gap-2 flex-1">
+                  <Button variant="ghost">
+                    <Link href="/signin" className="flex items-center gap-2">
+                      {" "}
+                      <LogIn size={20} /> Sign in
+                    </Link>
+                  </Button>
+                  <Button>
+                    <Link href="/signup">Sign Up</Link>
+                  </Button>
+                </div>
+              )}
+            </NavigationMenuList>
+            <NavigationMenuList className="mx-2">
+              <ThemeToggle />
+            </NavigationMenuList>
           </NavigationMenu>
         </div>
 
@@ -108,25 +105,6 @@ export function MainNav() {
                   Contact
                 </Link>
                 <ThemeToggle />
-                <SignedOut>
-                  <div className="flex gap-2">
-                    <LogIn />
-                    <SignInButton />
-                  </div>
-                  <div className="flex gap-2">
-                    <UserRoundPlus /> <SignUpButton />
-                  </div>
-                </SignedOut>
-                <SignedIn>
-                  <div className="flex gap-2">
-                    <LogOut />
-                    <SignOutButton />
-                  </div>
-                  <div className="flex gap-2">
-                    <Settings />
-                    <h2>Settings</h2>
-                  </div>
-                </SignedIn>
               </nav>
             </SheetContent>
           </Sheet>
