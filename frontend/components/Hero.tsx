@@ -12,9 +12,9 @@ const Hero = () => {
             Your Go-To Campus Marketplace in Kenya for Effortless Buying and
             Selling
           </h1>
-          <p className="text-center my-8">
-            Connect, buy, and sell effortlessly with Kenya&apos;s trusted campus
-            marketplace.
+          <p className="text-center my-8 max-w-2xl">
+            Buy, sell, or exchange hostel items and housing with fellow students
+            — fast, easy, and right on campus.
           </p>
           <div className="absolute -z-10 md:top-18 left-2 md:left-6 top-12 overflow-hidden md:w-[240px] w-[100px]">
             <Image

@@ -18,6 +18,16 @@ const nextConfig: NextConfig = {
         hostname: "placehold.co",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "placeimg.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "sborra.com",
+        port: "",
+      },
     ],
   },
 };
