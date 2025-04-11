@@ -5,6 +5,7 @@ import moment from "moment";
 import { Button } from "@/components/ui/button";
 
 import { ProfileForm } from "@/components/ProfileForm";
+import Image from "next/image";
 
 const Profile = () => {
   const { data: session, status } = useSession();
@@ -21,7 +22,7 @@ const Profile = () => {
           <p className="text-gray-500 text-sm">{moment().format("ll")}</p>
         </div>
         <div className="flex items-center gap-2">
-          <img
+          <Image
             src={session?.user.image || "/default-profile.png"}
             alt="user-profile"
             width={32}
@@ -35,7 +36,7 @@ const Profile = () => {
       <div className="flex flex-col">
         <div className="flex gap-4 justify-between mt-4">
           <div className="flex gap-4">
-            <img
+            <Image
               src={session?.user.image || "/default-profile.png"}
               alt="user-profile"
               width={60}

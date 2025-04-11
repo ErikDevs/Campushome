@@ -30,9 +30,9 @@ const UserProfile = () => {
         <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-         <Link href="/profile">
-           <DropdownMenuItem>Profile</DropdownMenuItem>
-         </Link>
+          <Link href="/profile">
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+          </Link>
           <DropdownMenuItem>
             <SignOutButton />
           </DropdownMenuItem>

@@ -1,5 +1,4 @@
 import React from "react";
-import {Mail} from "lucide-react";
 
 const Footer = () => {
   return (
@@ -13,9 +12,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="flex-col items-center gap-2">
-          <h2 className="text-2xl font-semibold mb-4">
-            Quick Links
-          </h2>
+          <h2 className="text-2xl font-semibold mb-4">Quick Links</h2>
           <ul className="flex-col text-gray-500 items-center gap-2">
             <li>Home</li>
             <li>About Us</li>
@@ -43,7 +40,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="flex flex-col border-t items-center gap-2">
-        <p className="text-gray-500 text-sm my-8">@ 2025 Copyrights. All right reserved</p>
+        <p className="text-gray-500 text-sm my-8">
+          @ 2025 Copyrights. All right reserved
+        </p>
       </div>
     </div>
   );
