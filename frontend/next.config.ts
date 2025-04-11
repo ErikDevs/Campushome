@@ -28,6 +28,21 @@ const nextConfig: NextConfig = {
         hostname: "sborra.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "google.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "forum.arcaneodyssey.dev",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "www.google.com",
+        port: "",
+      },
     ],
   },
 };
