@@ -34,8 +34,9 @@ export function MainNav() {
               <Link href="/">
                 <NavigationMenuItem>
                   <span className="flex items-center gap-2">
-                    <Image src="/logo.png" alt="logo" width={32} height={32} />
-                    <h2 className="font-bold">myCampus Home</h2>
+                    <h2 className="text-2xl font-semibold font-stretch-50%">
+                      myCampusHome
+                    </h2>
                   </span>
                 </NavigationMenuItem>
               </Link>

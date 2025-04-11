@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import AuthSessionProvider from "@/components/SessionProvider";
 import { MainNav } from "@/components/header";
 import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,10 +39,12 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {" "}
-            <MainNav />
-            {children}
-            <Footer />
+            <main>
+              <MainNav />
+              {children}
+              <Footer />
+            </main>
+            <Toaster />
           </ThemeProvider>
         </body>
       </AuthSessionProvider>

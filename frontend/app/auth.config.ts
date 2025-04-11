@@ -20,6 +20,7 @@ export const authConfig: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
+  session: { strategy: "jwt" },
   pages: {},
   callbacks: {
     async session({ session, token }) {

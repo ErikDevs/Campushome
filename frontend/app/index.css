@@ -1,0 +1,21 @@
+/* Spinner styles */
+.spinner {
+  border: 3px solid rgb(255, 255, 255);
+  border-top: 3px solid #ffffff; /* or your brand color */
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import SignOutButton from "./SignOutButton";
+import Link from "next/link";
 
 const UserProfile = () => {
   const { data: session, status } = useSession();
@@ -29,7 +30,9 @@ const UserProfile = () => {
         <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
+         <Link href="/profile">
+           <DropdownMenuItem>Profile</DropdownMenuItem>
+         </Link>
           <DropdownMenuItem>
             <SignOutButton />
           </DropdownMenuItem>

@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
         hostname: "i.imgur.com",
         pathname: "/**", // allow all paths
       },
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        port: "",
+      },
     ],
   },
 };

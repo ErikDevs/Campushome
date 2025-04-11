@@ -20,7 +20,7 @@ const page = () => {
         <CardHeader>
           <CardTitle>Welcome back to my Campus Home</CardTitle>
           <CardDescription>
-            The safestest and the fastest way to sell or buy campus amenities
+            The safest est and the fastest way to sell or buy campus amenities
           </CardDescription>
         </CardHeader>
         <CardContent>
