@@ -17,7 +17,6 @@ import { ThemeToggle } from "./ToggleTheme";
 import { LogIn, Menu } from "lucide-react";
 import { useSession } from "next-auth/react";
 import UserProfile from "./User";
-import Image from "next/image";
 
 export function MainNav() {
   const [isOpen, setIsOpen] = useState(false);

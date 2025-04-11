@@ -22,7 +22,6 @@ import { useEffect, useState } from "react";
 
 import ImageUpload from "./ImageUpload";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   title: z.string().min(2),
