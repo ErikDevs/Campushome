@@ -11,9 +11,14 @@ const {
   },
 } = config;
 
+const url =
+  process.env.NODE_ENV === "production"
+    ? "https://campushome.vercel.app/"
+    : "http://localhost:3000";
+
 const authenticator = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/auth/imagekit");
+    const response = await fetch(`${url}/api/auth/imagekit`);
     console.log(response);
     if (!response.ok) {
       const errorText = await response.text();

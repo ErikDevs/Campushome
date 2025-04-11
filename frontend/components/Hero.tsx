@@ -29,7 +29,7 @@ const Hero = () => {
         <div className="flex w-full mx-auto justify-center mt-8">
           {" "}
           <div className="flex gap-4">
-            <Link href="/post-listing">
+            <Link href="/">
               <Button variant="default" className="w-fit rounded-full p-6">
                 Explore now
               </Button>
