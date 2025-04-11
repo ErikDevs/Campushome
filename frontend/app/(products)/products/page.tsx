@@ -76,7 +76,7 @@ export default async function ProductsPage(props: any) {
   const endItem = Math.min(currentPage * limit, total);
 
   return (
-    <section className="flex flex-col container mx-auto w-full space-y-6">
+    <section className="flex flex-col container mx-auto max-w-7xl w-full space-y-6">
       <h1 className="text-2xl font-bold">Products</h1>
       <p className="text-slate-500">
         Showing {startItem}–{endItem} of {total} products
@@ -91,6 +91,8 @@ export default async function ProductsPage(props: any) {
                 src={product.images[0] || "/placeholder-product.jpg"}
                 alt={product.title}
                 className="rounded-md object-cover w-full h-48"
+                width={200}
+                height={200}
               />
             </CardHeader>
             <CardContent>
