@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -17,12 +16,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/lib/superbaseclient";
 import { useSession } from "next-auth/react";
+import { toast } from "sonner";
 
 const formSchema = z.object({
-  email: z.string(),
-  username: z
-    .string()
-    .min(2, { message: "Username must be at least 2 characters." }),
   gender: z.string().min(1, { message: "Gender is required." }),
   phone_number: z
     .string()
@@ -42,8 +38,6 @@ export function ProfileForm() {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: session?.user.email || "undefined",
-      username: "",
       gender: "",
       phone_number: "",
       university: "",
@@ -52,36 +46,22 @@ export function ProfileForm() {
   });
 
   const onSubmit = async (data: ProfileFormValues) => {
-    const { error } = await supabase.from("users").insert([data]);
+    const { error } = await supabase
+      .from("users")
+      .insert([
+        { ...data, username: session?.user.name, email: session?.user.email },
+      ]);
 
     if (error) {
-      console.error("Submission error:", error.message);
+      toast.error(`Submission error:, ${error.message}`);
     } else {
-      console.log("Profile saved successfully!");
-      console.log(data);
+      toast.success("Profile saved successfully!");
     }
   };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         <FormField
           control={form.control}
           name="gender"

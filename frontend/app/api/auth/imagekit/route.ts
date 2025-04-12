@@ -8,7 +8,7 @@ const {
   },
 } = config;
 
-const imageKit = new ImageKit({ publicKey, privateKey, urlEndpoint });
+export const imageKit = new ImageKit({ publicKey, privateKey, urlEndpoint });
 
 export async function GET() {
   return NextResponse.json(imageKit.getAuthenticationParameters());

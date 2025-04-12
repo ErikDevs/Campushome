@@ -12,7 +12,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-const HomePage = async () => {
+const HomePage = () => {
   return (
     <div className="w-full mx-auto px-6 max-w-7xl">
       <Hero />

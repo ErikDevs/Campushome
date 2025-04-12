@@ -3,7 +3,7 @@ import { IKImage, IKUpload, ImageKitProvider } from "imagekitio-next";
 import config from "@/lib/config";
 import React, { useRef, useState } from "react";
 import { toast } from "sonner";
-import { Upload } from "lucide-react";
+import { Upload, X } from "lucide-react";
 
 const {
   env: {
@@ -19,20 +19,13 @@ const url =
 const authenticator = async () => {
   try {
     const response = await fetch(`${url}/api/auth/imagekit`);
-    console.log(response);
     if (!response.ok) {
       const errorText = await response.text();
-
       throw new Error(
         `Request failed with status ${response.status}: ${errorText}`
       );
     }
-
-    const data = await response.json();
-
-    const { signature, expire, token } = data;
-
-    return { signature, expire, token };
+    return await response.json();
   } catch (error: unknown) {
     if (error instanceof Error) {
       throw new Error(`Authentication problem: ${error.message}`);
@@ -41,27 +34,44 @@ const authenticator = async () => {
   }
 };
 
+interface UploadedFile {
+  filePath: string;
+  url: string;
+}
+
 const ImageUpload = ({
-  onFileChange,
+  onFilesChange,
 }: {
-  onFileChange: (filePath: string) => void;
+  onFilesChange: (filePaths: string[]) => void;
 }) => {
   const IKUploadRef = useRef<HTMLInputElement | null>(null);
-  const [file, setFile] = useState<{ filePath: string } | null>(null);
+  const [files, setFiles] = useState<UploadedFile[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
 
-  interface ErrorResponse {
-    message: string;
-    [key: string]: unknown;
-  }
-
-  const onError = (error: ErrorResponse) => {
-    toast.error(`an error occured: ${error} `);
+  const onError = (error: { message: string }) => {
+    setIsUploading(false);
+    toast.error(`Upload failed: ${error.message}`);
   };
 
-  const onSuccess = (res: { filePath: string }) => {
-    setFile(res);
-    onFileChange(res.filePath);
-    toast.success("Image upload successfull");
+  const onSuccess = (res: { filePath: string; url: string }) => {
+    setFiles((prev) => [...prev, res]);
+    onFilesChange([...files.map((f) => f.filePath), res.filePath]);
+    setIsUploading(false);
+    toast.success("Image uploaded successfully");
+  };
+
+  const removeFile = (index: number) => {
+    const updatedFiles = files.filter((_, i) => i !== index);
+    setFiles(updatedFiles);
+    onFilesChange(updatedFiles.map((f) => f.filePath));
+  };
+
+  const handleUploadClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (IKUploadRef.current) {
+      setIsUploading(true);
+      IKUploadRef.current.click();
+    }
   };
 
   return (
@@ -70,36 +80,62 @@ const ImageUpload = ({
       urlEndpoint={urlEndpoint}
       authenticator={authenticator}
     >
-      <IKUpload
-        className="hidden"
-        ref={IKUploadRef}
-        onError={onError}
-        onSuccess={onSuccess}
-        fileName="test-upload.png"
-      />
-
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          if (IKUploadRef.current) {
-            IKUploadRef.current?.click();
-          }
-        }}
-        className="flex items-center justify-center border py-2 gap-4"
-      >
-        <Upload />
-        <p className="text-base teaxt-gray-500">Upload a file</p>
-      </button>
-      <p>Upload your profile photo</p>
-      {file && <p className="">{file.filePath}</p>}
-      {file && (
-        <IKImage
-          alt={file.filePath}
-          path={file.filePath}
-          width={200}
-          height={200}
+      <div className="space-y-4">
+        {/* Hidden upload input */}
+        <IKUpload
+          className="hidden"
+          ref={IKUploadRef}
+          onError={onError}
+          onSuccess={onSuccess}
+          fileName={`listing-${Date.now()}`}
+          useUniqueFileName={true}
+          folder="/listings"
+          isPrivateFile={false}
+          multiple // Enable multiple file uploads
         />
-      )}
+
+        {/* Upload button */}
+        <button
+          onClick={handleUploadClick}
+          disabled={isUploading}
+          className="flex items-center justify-center border-2 border-dashed rounded-lg p-4 gap-2 w-full hover:bg-gray-50 transition-colors disabled:opacity-50"
+        >
+          <Upload size={20} />
+          <span className="text-gray-600">
+            {isUploading ? "Uploading..." : "Click to upload images"}
+          </span>
+        </button>
+        <p className="text-sm text-gray-500">
+          Upload product photos (multiple allowed)
+        </p>
+
+        {/* Preview area */}
+        <div className="grid grid-cols-3 gap-4 mt-4">
+          {files.map((file, index) => (
+            <div key={file.filePath} className="relative group">
+              <IKImage
+                alt={`Listing image ${index + 1}`}
+                path={file.filePath}
+                transformation={[
+                  {
+                    height: 200,
+                    width: 200,
+                    crop: "maintain_ratio",
+                  },
+                ]}
+                className="rounded-md object-cover h-full w-full"
+              />
+              <button
+                type="button"
+                onClick={() => removeFile(index)}
+                className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <X size={16} />
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
     </ImageKitProvider>
   );
 };

@@ -27,7 +27,7 @@ const formSchema = z.object({
   title: z.string().min(2),
   description: z.string().min(50),
   price: z.preprocess((val) => Number(val), z.number().positive()),
-  image: z.string(),
+  images: z.array(z.string()),
 });
 
 type ProfileFormValues = z.infer<typeof formSchema>;
@@ -40,7 +40,7 @@ export function ListingForm() {
   const [userData, setUserData] = useState<{
     university: string;
     location: string;
-    id: string;
+    email: string;
   } | null>(null);
 
   const userId = session?.user?.email; // Extracting userId from session
@@ -60,7 +60,7 @@ export function ListingForm() {
           setUserData({
             university: user.university,
             location: user.location,
-            id: user.id,
+            email: user.email,
           });
         }
       }
@@ -76,8 +76,8 @@ export function ListingForm() {
     defaultValues: {
       title: "",
       description: "",
-      price: "0",
-      image: "",
+      price: "",
+      images: [],
     },
   });
 
@@ -88,7 +88,7 @@ export function ListingForm() {
       ...data,
       location: userData?.location,
       university: userData?.university,
-      user_id: userData?.id,
+      email: userData?.email,
     };
 
     try {
@@ -96,20 +96,19 @@ export function ListingForm() {
       const { error } = await supabase.from("listing").insert([dataToInsert]);
 
       if (error) {
-        toast(`Submission error, ${error.message}`);
+        toast.error(`Submission error, ${error.message}`);
       } else {
-        toast("Profile saved successfully!");
+        toast.success("Your list was saved successfully!");
       }
     } catch (error) {
       console.error(error);
-      toast("Unexpected error occurred.");
     } finally {
       setIsLoading(false); // stop loading
     }
   };
 
   return (
-    <div>
+    <div className="w-full md:w-1/2">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
@@ -160,11 +159,12 @@ export function ListingForm() {
 
           <FormField
             control={form.control}
-            name="image"
+            name="images"
             render={({ field }) => (
               <FormItem>
+                <FormLabel>Product Images</FormLabel>
                 <FormControl>
-                  <ImageUpload onFileChange={field.onChange} />
+                  <ImageUpload onFilesChange={(urls) => field.onChange(urls)} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -173,7 +173,7 @@ export function ListingForm() {
 
           <div className="flex-col gap-y-4 flex">
             <Button type="submit" disabled={loading}>
-              {loading ? "saving..." : "Save post"}
+              {loading ? "saving..." : "Post your ad"}
             </Button>
           </div>
         </form>

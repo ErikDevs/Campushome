@@ -1,6 +1,6 @@
-import { LoginButton } from "@/components/SignInButton";
-
+"use client";
 import { Button } from "@/components/ui/button";
+import { FcGoogle } from "react-icons/fc";
 import {
   Card,
   CardContent,
@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 const page = () => {
   return (
@@ -24,7 +25,13 @@ const page = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <LoginButton />
+          <button
+            onClick={() => signIn()}
+            className="flex  w-full items-center justify-center gap-2 border py-2 mb-4"
+          >
+            {" "}
+            <FcGoogle /> Signin with Google
+          </button>
           <form>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
@@ -42,7 +49,6 @@ const page = () => {
           <Button variant="outline">
             <Link href="/">Cancel</Link>
           </Button>
-          <Button>Deploy</Button>
         </CardFooter>
       </Card>
     </div>

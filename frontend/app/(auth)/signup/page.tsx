@@ -1,5 +1,3 @@
-import { SignUpButton } from "@/components/SignUpButton";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,7 +20,7 @@ const page = () => {
           <CardDescription>Join us today</CardDescription>
         </CardHeader>
         <CardContent>
-          <SignUpButton />
+          <Button>Sign up with Google</Button>
           <form>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">

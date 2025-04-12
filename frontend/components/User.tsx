@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -8,8 +8,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import SignOutButton from "./SignOutButton";
+
 import Link from "next/link";
+import { LogOut } from "lucide-react";
 
 const UserProfile = () => {
   const { data: session, status } = useSession();
@@ -33,11 +34,18 @@ const UserProfile = () => {
           <Link href="/profile">
             <DropdownMenuItem>Profile</DropdownMenuItem>
           </Link>
-          <DropdownMenuItem>
-            <SignOutButton />
-          </DropdownMenuItem>
+
           <DropdownMenuItem>Team</DropdownMenuItem>
           <DropdownMenuItem>Subscription</DropdownMenuItem>
+          <DropdownMenuItem>
+            <button
+              onClick={() => signOut()}
+              className="flex items-center gap-2"
+            >
+              <LogOut />
+              signOut
+            </button>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
