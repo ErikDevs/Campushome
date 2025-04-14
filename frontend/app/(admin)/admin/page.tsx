@@ -36,7 +36,16 @@ const getProducts = async () => {
 };
 
 const Page = () => {
-  const [products, setProducts] = useState<any[]>([]);
+  interface Product {
+    title: string;
+    description: string;
+    location: string;
+    university: string;
+    status: string;
+    price: number;
+  }
+
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -149,7 +158,7 @@ const Page = () => {
                 </TableHeader>
                 <TableBody>
                   {products.map((product) => (
-                    <TableRow key={product}>
+                    <TableRow key={product.title}>
                       <TableCell className="font-medium">
                         {product.title}
                       </TableCell>

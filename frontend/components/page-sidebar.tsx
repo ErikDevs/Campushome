@@ -1,13 +1,4 @@
-import {
-  Calendar,
-  Database,
-  Home,
-  Inbox,
-  LogOut,
-  Search,
-  Settings,
-  User,
-} from "lucide-react";
+import { Calendar, Database, Home, LogOut, User } from "lucide-react";
 
 import {
   Sidebar,
