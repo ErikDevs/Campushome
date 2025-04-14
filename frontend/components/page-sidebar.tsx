@@ -1,43 +1,48 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import {
+  Calendar,
+  Database,
+  Home,
+  Inbox,
+  LogOut,
+  Search,
+  Settings,
+  User,
+} from "lucide-react";
 
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { ThemeToggle } from "./ToggleTheme";
 
 // Menu items.
 const items = [
   {
-    title: "Home",
-    url: "#",
+    title: "Dashboad",
+    url: "/admin",
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    title: "Users",
+    url: "/admin/users",
+    icon: User,
   },
   {
-    title: "Calendar",
-    url: "#",
+    title: "Products",
+    url: "/admin/products",
     icon: Calendar,
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    title: "Profile",
+    url: "/admin/profile",
+    icon: Database,
   },
 ];
 
@@ -46,20 +51,49 @@ function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <div className="mt-12">
-                {items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <Link href={item.url}>
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
+              <div className="mt-12 h-[80vh]">
+                <div className="ml-4 flex border-b pb-4 items-center gap-2">
+                  <Avatar>
+                    <AvatarImage src="/user.png" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <h2 className="text-xl font-bold">Admin</h2>
+                </div>
+                <div className="h-full  flex flex-col justify-between ">
+                  <div className="mt-4">
+                    {items.map((item) => (
+                      <SidebarMenuItem key={item.title}>
+                        <SidebarMenuButton asChild>
+                          <Link href={item.url}>
+                            <item.icon />
+                            <span>{item.title}</span>
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    ))}
+                  </div>
+                  <div>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton asChild>
+                        <Link href="/">
+                          <Home />
+                          <span>Back to site</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton asChild>
+                        <Link href="#">
+                          <LogOut />
+                          <span>Logout</span>
+                        </Link>
+                      </SidebarMenuButton>
+                      <ThemeToggle />
+                    </SidebarMenuItem>
+                  </div>
+                </div>
               </div>
             </SidebarMenu>
           </SidebarGroupContent>

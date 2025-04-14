@@ -4,6 +4,7 @@ import config from "@/lib/config";
 import React, { useRef, useState } from "react";
 import { toast } from "sonner";
 import { Upload, X } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 const {
   env: {
@@ -48,6 +49,8 @@ const ImageUpload = ({
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [isUploading, setIsUploading] = useState(false);
 
+  const { data: session } = useSession();
+
   const onError = (error: { message: string }) => {
     setIsUploading(false);
     toast.error(`Upload failed: ${error.message}`);
@@ -68,7 +71,8 @@ const ImageUpload = ({
 
   const handleUploadClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (IKUploadRef.current) {
+    if (IKUploadRef.current && session) {
+      toast.error("You must be logged in to create a listing");
       setIsUploading(true);
       IKUploadRef.current.click();
     }

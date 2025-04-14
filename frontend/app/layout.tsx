@@ -39,11 +39,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <main>
-              <MainNav />
-              {children}
-              <Footer />
-            </main>
+            <main>{children}</main>
             <Toaster position="top-center" richColors />
           </ThemeProvider>
         </body>

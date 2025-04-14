@@ -95,8 +95,10 @@ export function ListingForm() {
       console.log("Data to insert:", dataToInsert);
       const { error } = await supabase.from("listing").insert([dataToInsert]);
 
-      if (error) {
-        toast.error(`Submission error, ${error.message}`);
+      if (error || !session) {
+        toast.error(
+          `Submission error, you must be logged in and completed your profile to be able to post `
+        );
       } else {
         toast.success("Your list was saved successfully!");
       }
