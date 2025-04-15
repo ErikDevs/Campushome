@@ -19,7 +19,7 @@ interface PageProps {
   searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default async function ProductPage({ params }: PageProps) {
+async function ProductPage({ params }: PageProps) {
   const { data: product, error } = await supabase
     .from("listing")
     .select("*")
@@ -79,3 +79,5 @@ export default async function ProductPage({ params }: PageProps) {
     </div>
   );
 }
+
+export default ProductPage;
