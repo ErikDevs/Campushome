@@ -2,7 +2,7 @@
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/superbaseclient";
 import { Image } from "@imagekit/next";
-import { PageProps } from "@/.next/types/app/product/[...id]/page";
+import { PageProps } from "@/.next/types/app/product/[id]/page";
 
 interface Product {
   id: number;
