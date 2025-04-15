@@ -14,11 +14,12 @@ interface Product {
   location?: string;
 }
 
-export default async function ProductPage({
-  params,
-}: {
+interface PageProps {
   params: { id: string };
-}) {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export default async function ProductPage({ params }: PageProps) {
   const { data: product, error } = await supabase
     .from("listing")
     .select("*")
