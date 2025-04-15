@@ -29,13 +29,6 @@ export default async function ProductPage({
     return notFound();
   }
 
-  const { data: phoneNumberData } = await supabase
-    .from("users")
-    .select("phone_number")
-    .eq("email", product.email);
-
-  const phoneNumber = phoneNumberData?.[0]?.phone_number || "Unavailable";
-
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="grid md:grid-cols-2 gap-8 items-center">
