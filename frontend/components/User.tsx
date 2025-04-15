@@ -12,6 +12,7 @@ import {
 
 import Link from "next/link";
 import { LogOut } from "lucide-react";
+import { ThemeToggle } from "./ToggleTheme";
 
 const UserProfile = () => {
   const { data: session, status } = useSession();
@@ -49,6 +50,7 @@ const UserProfile = () => {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      <ThemeToggle />
     </div>
   );
 };

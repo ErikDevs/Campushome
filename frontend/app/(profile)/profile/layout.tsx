@@ -1,13 +1,11 @@
+import Footer from "@/components/Footer";
 import { ReactNode } from "react";
-import AppSidebar from "@/components/page-sidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 const ProfileLayout = ({ children }: { children: ReactNode }) => (
-  <SidebarProvider>
-    <AppSidebar />
-    <SidebarTrigger />
-    <main>{children}</main>
-  </SidebarProvider>
+  <main className="max-w-7xl mx-auto px-6">
+    {children}
+    <Footer />
+  </main>
 );
 
 export default ProfileLayout;

@@ -27,10 +27,10 @@ export const authConfig: NextAuthOptions = {
     }),
   ],
   session: { strategy: "jwt" },
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {},
   callbacks: {
     async signIn({ user }) {
-      // Check if user exists in Supabase and get their role
       const { data, error } = await supabase
         .from("users")
         .select("role")
@@ -38,24 +38,28 @@ export const authConfig: NextAuthOptions = {
         .single();
 
       if (error || !data) {
-        // User not in Supabase - optionally create them
-        console.log(error);
+        console.error("❌ Supabase user fetch failed", error);
       } else {
-        user.role = data.role;
+        console.log("🔓 Role from Supabase:", data.role);
+        user.role = data.role; // ✅ role goes into user
       }
 
       return true;
     },
+
     async jwt({ token, user }) {
       if (user) {
-        token.role = user.role; // From signIn callback
+        token.role = user.role ?? "user"; // ✅ move role into token
+        console.log("✅ JWT callback set token.role:", token.role);
       }
       return token;
     },
+
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.sub!; // Required for session validation
-        session.user.role = token.role as string;
+        session.user.id = token.sub!;
+        session.user.role = token.role as string; // ✅ move token.role into session
+        console.log("🧠 Session created with role:", session.user.role);
       }
       return session;
     },

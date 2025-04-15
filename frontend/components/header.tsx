@@ -70,9 +70,7 @@ export function MainNav() {
                 </div>
               )}
             </NavigationMenuList>
-            <NavigationMenuList className="mx-2">
-              <ThemeToggle />
-            </NavigationMenuList>
+            <NavigationMenuList className="mx-2"></NavigationMenuList>
           </NavigationMenu>
         </div>
 

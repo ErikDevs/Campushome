@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import { MainNav } from "@/components/header";
 import React, { ReactNode } from "react";
 
@@ -6,6 +7,7 @@ const layout = ({ children }: { children: ReactNode }) => {
     <div>
       <MainNav />
       {children}
+      <Footer />
     </div>
   );
 };

@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { supabase } from "@/lib/superbaseclient";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   gender: z.string().min(1, { message: "Gender is required." }),
@@ -34,7 +35,7 @@ const formSchema = z.object({
 type ProfileFormValues = z.infer<typeof formSchema>;
 
 export function ProfileForm() {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,6 +46,10 @@ export function ProfileForm() {
     },
   });
 
+  const router = useRouter();
+
+  const userEmail = session?.user.email;
+
   const onSubmit = async (data: ProfileFormValues) => {
     const { error } = await supabase
       .from("users")
@@ -52,12 +57,25 @@ export function ProfileForm() {
         { ...data, username: session?.user.name, email: session?.user.email },
       ]);
 
-    if (error) {
-      toast.error(`Submission error:, ${error.message}`);
-    } else {
+    const { data: userData } = await supabase
+      .from("users")
+      .select("email")
+      .eq("email", userEmail)
+      .single();
+
+    if (userData) {
+      toast.error("User already exist in the database");
+    } else if (!userData) {
       toast.success("Profile saved successfully!");
+      router.push("/");
+    } else if (error) {
+      toast.error("An error occured try again");
     }
   };
+
+  if (status === "loading") {
+    <div>Loading ...</div>;
+  }
 
   return (
     <Form {...form}>

@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { ThemeToggle } from "./ToggleTheme";
 
 // Menu items.
 const items = [
@@ -47,7 +46,7 @@ function AppSidebar() {
               <div className="mt-12 h-[80vh]">
                 <div className="ml-4 flex border-b pb-4 items-center gap-2">
                   <Avatar>
-                    <AvatarImage src="/user.png" />
+                    <AvatarImage src="" />
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
                   <h2 className="text-xl font-bold">Admin</h2>
@@ -81,7 +80,6 @@ function AppSidebar() {
                           <span>Logout</span>
                         </Link>
                       </SidebarMenuButton>
-                      <ThemeToggle />
                     </SidebarMenuItem>
                   </div>
                 </div>

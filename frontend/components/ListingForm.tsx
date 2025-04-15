@@ -28,6 +28,7 @@ const formSchema = z.object({
   description: z.string().min(50),
   price: z.preprocess((val) => Number(val), z.number().positive()),
   images: z.array(z.string()),
+  category: z.enum(["Electronics", "Furniture", "Clothing", "Books", "Other"]),
 });
 
 type ProfileFormValues = z.infer<typeof formSchema>;
@@ -78,6 +79,7 @@ export function ListingForm() {
       description: "",
       price: "",
       images: [],
+      category: undefined,
     },
   });
 
@@ -95,9 +97,13 @@ export function ListingForm() {
       console.log("Data to insert:", dataToInsert);
       const { error } = await supabase.from("listing").insert([dataToInsert]);
 
-      if (error || !session) {
+      if (error) {
+        console.log(error);
+      }
+
+      if (!session) {
         toast.error(
-          `Submission error, you must be logged in and completed your profile to be able to post `
+          `You must be logged in and completed your profile to create a listing `
         );
       } else {
         toast.success("Your list was saved successfully!");
@@ -143,6 +149,20 @@ export function ListingForm() {
 
           <FormField
             control={form.control}
+            name="category"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Category</FormLabel>
+                <FormControl>
+                  <Input placeholder="Electronic, Furniture, " {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
             name="price"
             render={({ field }) => (
               <FormItem>
@@ -174,7 +194,7 @@ export function ListingForm() {
           />
 
           <div className="flex-col gap-y-4 flex">
-            <Button type="submit" disabled={loading}>
+            <Button type="submit" disabled={loading || !session}>
               {loading ? "saving..." : "Post your ad"}
             </Button>
           </div>

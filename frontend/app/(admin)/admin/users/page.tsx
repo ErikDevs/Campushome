@@ -1,7 +1,12 @@
+import AllUsers from "@/components/Users";
 import React from "react";
 
-const users = () => {
-  return <div>users</div>;
+const Users = () => {
+  return (
+    <div>
+      <AllUsers />
+    </div>
+  );
 };
 
-export default users;
+export default Users;
