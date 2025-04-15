@@ -14,12 +14,15 @@ interface Product {
   location?: string;
 }
 
-interface PageProps {
-  params: { id: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+function getPageProps():
+  | { params: { id: string } }
+  | PromiseLike<{ params: { id: string } }> {
+  throw new Error("Function not implemented.");
 }
 
-async function ProductPage({ params }: PageProps) {
+const { params } = await getPageProps();
+
+async function ProductPage() {
   const { data: product, error } = await supabase
     .from("listing")
     .select("*")
