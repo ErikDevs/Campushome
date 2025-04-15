@@ -14,15 +14,7 @@ interface Product {
   location?: string;
 }
 
-function getPageProps():
-  | { params: { id: string } }
-  | PromiseLike<{ params: { id: string } }> {
-  throw new Error("Function not implemented.");
-}
-
-const { params } = await getPageProps();
-
-async function ProductPage() {
+async function ProductPage({ params }: { params: { id: string } }) {
   const { data: product, error } = await supabase
     .from("listing")
     .select("*")
