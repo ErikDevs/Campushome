@@ -1,6 +1,4 @@
 "use client";
-
-import { ListingForm } from "@/components/ListingForm";
 import { supabase } from "@/lib/superbaseclient";
 import { useSession } from "next-auth/react";
 import { Image } from "@imagekit/next";
