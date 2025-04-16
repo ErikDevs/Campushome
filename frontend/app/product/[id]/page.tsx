@@ -2,7 +2,6 @@
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/superbaseclient";
 import { Image } from "@imagekit/next";
-import { PageProps } from "@/.next/types/app/product/[id]/page";
 
 interface Product {
   id: number;
@@ -15,11 +14,11 @@ interface Product {
   location?: string;
 }
 
-const ProductPage = async ({ params }: PageProps) => {
+const ProductPage = async ({ params }: { params: { id: string } }) => {
   const { data: product, error } = await supabase
     .from("listing")
     .select("*")
-    .eq("id", (await params)?.id ?? "")
+    .eq("id", params?.id ?? "")
     .single<Product>();
 
   if (error || !product) {

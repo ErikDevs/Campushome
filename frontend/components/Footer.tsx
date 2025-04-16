@@ -40,11 +40,6 @@ const Footer = () => {
           <div>(123) 456 7890</div>
           <div>Nairobi Tom Mbaya Street</div>
         </div>
-        <Link href="/post-listing">
-          <Button variant="default" className="w-fit  p-6">
-            Sell Now
-          </Button>
-        </Link>
       </div>
       <div className="flex flex-col border-t items-center gap-2">
         <p className="text-gray-500 text-sm my-8">

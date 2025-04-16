@@ -71,8 +71,7 @@ const ImageUpload = ({
 
   const handleUploadClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (IKUploadRef.current && !session) {
-      toast.error("You must be logged in to create a listing");
+    if (IKUploadRef.current) {
       setIsUploading(true);
       IKUploadRef.current.click();
     }
@@ -101,23 +100,24 @@ const ImageUpload = ({
         {/* Upload button */}
         <button
           onClick={handleUploadClick}
-          disabled={isUploading && !session}
-          className="flex items-center justify-center border-2 border-dashed rounded-lg p-4 gap-2 w-full hover:bg-gray-50 transition-colors disabled:opacity-50"
+          disabled={isUploading || !session}
+          className="flex items-center justify-center border-2 border-dashed rounded-lg p-4 gap-2 w-full  disabled:opacity-50"
         >
           <Upload size={20} />
           <span className="text-gray-600">
             {isUploading ? "Uploading..." : "Click to upload images"}
           </span>
         </button>
-        <p className="text-sm text-gray-500">
-          {!session ? (
-            <p className="text-red-400">
-              Login and set up your profile to create a listing
-            </p>
-          ) : (
-            <p>Upload product photos (multiple allowed)</p>
-          )}
-        </p>
+
+        {session ? (
+          <p className="text-sm text-gray-500">
+            Upload product photos (multiple allowed)
+          </p>
+        ) : (
+          <p className="text-sm text-red-400">
+            Login and complete your account setup to start selling
+          </p>
+        )}
 
         {/* Preview area */}
         <div className="grid grid-cols-3 gap-4 mt-4">

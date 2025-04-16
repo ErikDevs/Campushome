@@ -22,13 +22,20 @@ import { useEffect, useState } from "react";
 
 import ImageUpload from "./ImageUpload";
 import { toast } from "sonner";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 const formSchema = z.object({
   title: z.string().min(2),
   description: z.string().min(50),
   price: z.preprocess((val) => Number(val), z.number().positive()),
   images: z.array(z.string()),
-  category: z.enum(["Electronics", "Furniture", "Clothing", "Books", "Other"]),
+  category: z.string(),
 });
 
 type ProfileFormValues = z.infer<typeof formSchema>;
@@ -79,7 +86,7 @@ export function ListingForm() {
       description: "",
       price: "",
       images: [],
-      category: undefined,
+      category: "",
     },
   });
 
@@ -116,7 +123,7 @@ export function ListingForm() {
   };
 
   return (
-    <div className="w-full md:w-1/2">
+    <div className="w-full">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
@@ -126,7 +133,7 @@ export function ListingForm() {
               <FormItem>
                 <FormLabel>Title</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field} />
+                  <Input placeholder="Product title" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -140,7 +147,10 @@ export function ListingForm() {
               <FormItem>
                 <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Describe your item" {...field} />
+                  <Textarea
+                    placeholder="A short description of your item"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -154,7 +164,18 @@ export function ListingForm() {
               <FormItem>
                 <FormLabel>Category</FormLabel>
                 <FormControl>
-                  <Input placeholder="Electronic, Furniture, " {...field} />
+                  <Select value={field.value} onValueChange={field.onChange}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="electronics">Electronics</SelectItem>
+                      <SelectItem value="furniture">Furniture</SelectItem>
+                      <SelectItem value="clothing">Clothing</SelectItem>
+                      <SelectItem value="books">Books</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </FormControl>
                 <FormMessage />
               </FormItem>

@@ -38,10 +38,8 @@ export const authConfig: NextAuthOptions = {
         .single();
 
       if (error || !data) {
-        console.error("❌ Supabase user fetch failed", error);
       } else {
-        console.log("🔓 Role from Supabase:", data.role);
-        user.role = data.role; // ✅ role goes into user
+        user.role = data.role;
       }
 
       return true;
@@ -49,8 +47,7 @@ export const authConfig: NextAuthOptions = {
 
     async jwt({ token, user }) {
       if (user) {
-        token.role = user.role ?? "user"; // ✅ move role into token
-        console.log("✅ JWT callback set token.role:", token.role);
+        token.role = user.role ?? "user";
       }
       return token;
     },
@@ -58,8 +55,7 @@ export const authConfig: NextAuthOptions = {
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.sub!;
-        session.user.role = token.role as string; // ✅ move token.role into session
-        console.log("🧠 Session created with role:", session.user.role);
+        session.user.role = token.role as string;
       }
       return session;
     },

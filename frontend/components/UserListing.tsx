@@ -57,8 +57,16 @@ const UserListing = () => {
     fetchData();
   }, [session]); // Re-fetch when session changes
 
+  if (!session) {
+    return (
+      <div className="w-full">
+        <h2>Your listing will appear here</h2>
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-7xl px-6 w-full mt-8 mx-auto">
+    <div className="w-full">
       <div className="mb-4">
         <h1 className="text-2xl font-bold">Create your listing</h1>
         <p className="text-gray-500 text-base max-w-md">
@@ -66,8 +74,6 @@ const UserListing = () => {
         </p>
       </div>
       <div className="flex justify-between gap-4">
-        <ListingForm />
-
         <div className="space-y-2">
           <h2 className="text-xl font-bold">Your Listing</h2>
           {loading ? (

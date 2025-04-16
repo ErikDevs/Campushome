@@ -21,8 +21,7 @@ const UserProfile = () => {
   if (status === "unauthenticated") return <div>Please log in</div>;
 
   return (
-    <div className="flex items-center gap-2">
-      <h2>{session?.user?.name}</h2>
+    <div className="flex  items-center gap-2">
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Avatar>
