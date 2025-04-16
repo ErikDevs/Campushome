@@ -27,7 +27,7 @@ export function MainNav() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       {/* Desktop Navigation */}
-      <nav className="w-full justify-center flex h-14">
+      <nav className="w-full hidden justify-center md:flex h-14">
         <NavigationMenu>
           <ul className="flex justify-between w-full gap-32">
             <NavigationMenuList>
@@ -110,8 +110,10 @@ export function MainNav() {
       </nav>
 
       {/* Mobile Navigation */}
-      <div className="flex md:hidden w-full items-center justify-between  ml-auto">
-        <h1>myCampusHome</h1>
+      <div className="flex md:hidden px-2 w-full items-center justify-between  ml-auto">
+        <Link href="/">
+          <h1 className="text-exl font-bold">myCampusHome</h1>
+        </Link>
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>

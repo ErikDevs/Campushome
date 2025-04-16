@@ -55,16 +55,16 @@ export default async function Products({
     <section className="flex flex-col w-full">
       <p className="text-slate-500">Latest Listing</p>
       {/* Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 mt-8 md:grid-cols-3 lg:grid-cols-4 ">
         {products.map((product) => (
           <Link href={`product/${product.id}`} key={product.id}>
             <div className="hover:shadow-lg border rounded-md transition-shadow">
-              <div className="flex justify-center py-2 h-[300px]">
+              <div className="flex justify-center">
                 {product.images?.length > 0 ? (
                   <Image
                     urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
                     src={product.images[0]}
-                    width={300}
+                    width={500}
                     height={100}
                     alt="Picture of the author"
                   />

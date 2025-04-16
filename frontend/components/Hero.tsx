@@ -5,10 +5,10 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col gap-6 mt-8 justify-between h-auto md:h-[80vh] items-center ">
+    <div className="flex flex-col px-4 gap-6 mt-8 justify-between h-auto md:h-[80vh] items-center ">
       <div className="flex mt-8 flex-col z-10">
         <div className="">
-          <h1 className="text-center z-10  md:text-5xl text-5xl max-w-3xl leading-snug">
+          <h1 className="text-center z-10  md:text-5xl text-4xl max-w-3xl leading-snug">
             Your <span className="font-bold">Go-To</span> Campus market in Kenya
             for Buying and Selling
           </h1>
