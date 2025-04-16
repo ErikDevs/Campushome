@@ -2,6 +2,8 @@ import { supabase } from "@/lib/superbaseclient";
 import { Image } from "@imagekit/next";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 interface Product {
   id: number;
   title: string;
@@ -17,20 +19,20 @@ const fetchProducts = async (
   limit: number
 ): Promise<{ products: Product[]; total: number }> => {
   const offset = (page - 1) * limit;
-  const res = await supabase
+  const { data, error, count } = await supabase
     .from("listing")
-    .select("*")
+    .select("*", { count: "exact" })
     .eq("status", "approved")
     .range(offset, offset + limit - 1);
-  if (res.error) {
-    throw new Error(res.error.message);
-  }
-  const products = res.data || [];
 
-  // Note: This API doesn't return total count, so we'll simulate it
-  // In a real app, you'd need an endpoint that returns total count
-  const total = 100; // Assuming we have 100 products total
-  return { products, total };
+  if (error) throw new Error(error.message);
+
+  console.log("Fetched products:", data); // Debugging
+
+  return {
+    products: data || [],
+    total: count || 0,
+  };
 };
 
 export default async function Listing({
@@ -44,7 +46,7 @@ export default async function Listing({
 
   return (
     <section className="flex flex-col w-full">
-      <p className="text-slate-500">Letest Listing</p>
+      <p className="text-slate-500">Latest Listing</p>
       <div className="grid grid-cols-1 mt-4 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((product) => (
           <div key={product.id} className="border rounded-md pb-5">
@@ -52,13 +54,12 @@ export default async function Listing({
               <div>
                 <Image
                   urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
-                  src={product.images[0]}
+                  src={`${product.images[0]}?${Date.now()}`}
                   width={500}
                   height={500}
-                  alt="Picture of the author"
+                  alt={product.title}
                 />
               </div>
-
               <div className="px-5 mt-4">
                 <div className="flex justify-between">
                   <p className="font-semibold line-clamp-1">{product.title}</p>
