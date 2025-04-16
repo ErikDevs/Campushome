@@ -14,11 +14,16 @@ interface Product {
   location?: string;
 }
 
-const ProductPage = async ({ params }: { params: { id: string } }) => {
+type ProductsPageProps = {
+  params: Promise<{ id?: string }>;
+};
+
+const ProductPage = async ({ params }: ProductsPageProps) => {
+  const resolvedParams = await params;
   const { data: product, error } = await supabase
     .from("listing")
     .select("*")
-    .eq("id", params?.id ?? "")
+    .eq("id", resolvedParams?.id ?? "")
     .single<Product>();
 
   if (error || !product) {
