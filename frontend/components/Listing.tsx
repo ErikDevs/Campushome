@@ -27,8 +27,6 @@ const fetchProducts = async (
 
   if (error) throw new Error(error.message);
 
-  console.log("Fetched products:", data); // Debugging
-
   return {
     products: data || [],
     total: count || 0,

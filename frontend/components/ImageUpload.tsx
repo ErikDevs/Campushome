@@ -101,7 +101,7 @@ const ImageUpload = ({
         {/* Upload button */}
         <button
           onClick={handleUploadClick}
-          disabled={isUploading || !session}
+          disabled={isUploading && !session}
           className="flex items-center justify-center border-2 border-dashed rounded-lg p-4 gap-2 w-full hover:bg-gray-50 transition-colors disabled:opacity-50"
         >
           <Upload size={20} />
