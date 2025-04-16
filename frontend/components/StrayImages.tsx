@@ -28,12 +28,9 @@ export function OrphanedImagesCount() {
   }, []);
 
   return (
-    <div className="p-4 border rounded-lg bg-white shadow-sm">
-      <h3 className="font-medium text-gray-700">Orphaned Images</h3>
+    <>
       {loading ? (
-        <div className="flex items-center mt-2">
-          <div className="animate-pulse h-6 w-8 bg-gray-200 rounded" />
-        </div>
+        <div className="animate-pulse h-6 w-8 rounded" />
       ) : (
         <p className="text-2xl font-bold mt-1">
           {count !== null ? count : "Error"}
@@ -42,6 +39,6 @@ export function OrphanedImagesCount() {
       <p className="text-sm text-gray-500 mt-1">
         Images in ImageKit not referenced in database
       </p>
-    </div>
+    </>
   );
 }

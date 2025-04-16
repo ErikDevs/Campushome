@@ -72,7 +72,7 @@ export function ImageCleanupButton() {
         variant="default"
         className="w-full"
       >
-        {isLoading ? "Cleaning..." : "Cleanup Orphaned Images"}
+        {isLoading ? "Cleaning..." : "Delete unused images"}
       </Button>
       <p className="text-sm text-muted-foreground">
         Will delete ImageKit files that don't contain any database URLs

@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/table";
 
 import { supabase } from "@/lib/superbaseclient";
-import { Box, User } from "lucide-react";
+import { Box, Image, User } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { OrphanedImagesCount } from "./StrayImages";
 
@@ -283,7 +283,16 @@ const UserData = () => {
           </CardFooter>
         </Card>
         <Card>
-          <CardHeader></CardHeader>
+          <CardHeader>
+            <CardTitle>
+              <div className="flex justify-between items-center">
+                <h3 className="font-medium text-violet-600">
+                  Total Orphaned Images
+                </h3>
+                <Image />
+              </div>
+            </CardTitle>
+          </CardHeader>
           <CardContent>
             <OrphanedImagesCount />
           </CardContent>
