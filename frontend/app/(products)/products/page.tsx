@@ -13,11 +13,9 @@ import Link from "next/link";
 
 // Removed unused Product interface
 
-interface ProductsPageProps {
-  searchParams: {
-    page?: string;
-  };
-}
+type ProductsPageProps = {
+  searchParams: Promise<{ page?: string }>;
+};
 
 const ITEMS_PER_PAGE = 10;
 
@@ -50,7 +48,8 @@ async function fetchProducts(page: number) {
 export default async function ProductsPage({
   searchParams,
 }: ProductsPageProps) {
-  const currentPage = Number(searchParams?.page || "1");
+  const resolvedSearchParams = await searchParams;
+  const currentPage = Number(resolvedSearchParams?.page || "1");
   const { products, total } = await fetchProducts(currentPage);
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
   const startItem = (currentPage - 1) * ITEMS_PER_PAGE + 1;
