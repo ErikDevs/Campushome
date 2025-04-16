@@ -27,7 +27,7 @@ const UserSignin = () => {
       </CardHeader>
       <CardContent>
         <button
-          onClick={() => signIn()}
+          onClick={() => signIn("google", { callbackUrl: "/signin" })}
           className="flex  w-full items-center justify-center gap-2 border py-2 mb-4"
         >
           {" "}

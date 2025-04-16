@@ -39,13 +39,15 @@ const UserProfile = () => {
           <DropdownMenuItem>Team</DropdownMenuItem>
           <DropdownMenuItem>Subscription</DropdownMenuItem>
           <DropdownMenuItem>
-            <button
-              onClick={() => signOut()}
-              className="flex items-center gap-2"
-            >
-              <LogOut />
-              signOut
-            </button>
+            <Link href="/">
+              <button
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="flex items-center gap-2"
+              >
+                <LogOut />
+                signOut
+              </button>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
