@@ -20,6 +20,7 @@ import {
 import { supabase } from "@/lib/superbaseclient";
 import { Box, User } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { OrphanedImagesCount } from "./StrayImages";
 
 const getProducts = async () => {
   try {
@@ -280,6 +281,12 @@ const UserData = () => {
           <CardFooter>
             <p>Total sales</p>
           </CardFooter>
+        </Card>
+        <Card>
+          <CardHeader></CardHeader>
+          <CardContent>
+            <OrphanedImagesCount />
+          </CardContent>
         </Card>
       </div>
 

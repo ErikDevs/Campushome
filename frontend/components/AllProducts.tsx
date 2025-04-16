@@ -127,8 +127,8 @@ const AllProducts = () => {
                             process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT
                           }
                           src={image}
-                          width={500}
-                          height={500}
+                          width={100}
+                          height={100}
                           alt="Picture of the author"
                         />
                       ))}

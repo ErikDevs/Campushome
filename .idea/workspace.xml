@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3cd0e77-361b-46d6-8232-516e46542b12" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/app/admin/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/(post-listing)/post-listing/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/(post-listing)/post-listing/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/ImageUpload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/ImageUpload.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/ListingForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/ListingForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/ProfileForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/ProfileForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/UserListings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/UserListings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/(admin)/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/(admin)/admin/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/(admin)/admin/products/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/(admin)/admin/products/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/(products)/products/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/(products)/products/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components/AllProducts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/AllProducts.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,22 +30,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\Users\\Nexa Creatives\\Campushome\\frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Nexa Creatives\\Campushome\\frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Nexa Creatives\Campushome\frontend" />
@@ -77,6 +73,7 @@
       <workItem from="1744226366383" duration="2403000" />
       <workItem from="1744230973818" duration="15342000" />
       <workItem from="1744470515743" duration="1392000" />
+      <workItem from="1744828011940" duration="633000" />
     </task>
     <servers />
   </component>
