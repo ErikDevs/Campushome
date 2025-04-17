@@ -19,6 +19,8 @@ import { supabase } from "@/lib/superbaseclient";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
+export const dynamic = "force-dynamic";
+
 const getUsers = async () => {
   try {
     const { data, error } = await supabase.from("users").select("*");

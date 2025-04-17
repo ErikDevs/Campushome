@@ -18,6 +18,8 @@ interface Listing {
   // Add other fields from your listing table
 }
 
+export const dynamic = "force-dynamic";
+
 const UserListing = () => {
   const { data: session } = useSession();
   const [listing, setListing] = useState<Listing[]>([]);

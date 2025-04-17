@@ -52,15 +52,15 @@ export default async function Products({
   const { products } = await fetchProducts(currentPage, limit);
 
   return (
-    <section className="flex flex-col w-full">
-      <p className="text-slate-500">Latest Listing</p>
+    <section className="flex flex-col px-6 w-full">
+      <p className="text-slate-500 font-bold mb-4">Latest Listing</p>
       {/* Products Grid */}
-      <div className="grid grid-cols-2 mt-8 md:grid-cols-3 lg:grid-cols-4 ">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 lg:grid-cols-4 ">
         {products.map((product) => (
           <Link href={`product/${product.id}`} key={product.id}>
             <div className="hover:shadow-lg border rounded-md transition-shadow">
-              <div className="flex justify-center">
-                {product.images?.length > 0 ? (
+              {product.images?.length > 0 ? (
+                <div className="h-[12rem] flex items-center">
                   <Image
                     urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
                     src={product.images[0]}
@@ -68,12 +68,13 @@ export default async function Products({
                     height={100}
                     alt="Picture of the author"
                   />
-                ) : (
-                  <div className="w-full h-48 bg-gray-100 rounded-t-md flex items-center justify-center">
-                    <span className="text-gray-400">No image</span>
-                  </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <div className="w-full h-48 bg-gray-100 rounded-t-md flex items-center justify-center">
+                  <span className="text-gray-400">No image</span>
+                </div>
+              )}
+
               <div className="p-4">
                 <p className="font-semibold line-clamp-1">{product.title}</p>
                 <p className="text-sm text-gray-500">KES {product.price}</p>

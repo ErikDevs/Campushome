@@ -287,7 +287,7 @@ const UserData = () => {
             <CardTitle>
               <div className="flex justify-between items-center">
                 <h3 className="font-medium text-violet-600">
-                  Total Orphaned Images
+                  Total unrelated Images
                 </h3>
                 <Image />
               </div>

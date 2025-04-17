@@ -9,7 +9,7 @@ import { Button } from "./ui/button";
 
 const Category = () => {
   return (
-    <div>
+    <div className="px-6 hidden md:flex">
       <Card>
         <CardHeader>Filter Items</CardHeader>
         <CardContent>

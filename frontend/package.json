@@ -36,6 +36,7 @@
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.41.0",
+    "embla-carousel-react": "^8.6.0",
     "firebase": "^11.6.0",
     "google-recaptcha-v3": "^1.0.9",
     "imagekit": "^6.0.0",

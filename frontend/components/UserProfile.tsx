@@ -9,6 +9,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowBigLeft } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 const UserProfile = () => {
   const { data: session, status } = useSession();
 

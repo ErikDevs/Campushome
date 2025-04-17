@@ -14,6 +14,8 @@ import Link from "next/link";
 import { LogOut } from "lucide-react";
 import { ThemeToggle } from "./ToggleTheme";
 
+export const dynamic = "force-dynamic";
+
 const UserProfile = () => {
   const { data: session, status } = useSession();
 
@@ -30,7 +32,9 @@ const UserProfile = () => {
           </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuLabel>
+            <h2 className="capitalize">{session?.user.name}</h2>
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <Link href="/profile">
             <DropdownMenuItem>Profile</DropdownMenuItem>

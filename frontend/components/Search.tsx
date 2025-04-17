@@ -1,18 +1,13 @@
 import React from "react";
 import { Input } from "./ui/input";
 import { Search } from "lucide-react";
-import { Dialog, DialogContent, DialogTrigger } from "../components/ui/dialog";
+import { NavigationMenu } from "./ui/navigation-menu";
 
 const SearchItem = () => {
   return (
-    <div className="relative hidden md:flex items-center flex-2 w-[400px]  gap-2 border px-6 py-2 rounded-md">
-      <Search size={20} />
-      <Dialog>
-        <DialogTrigger>Search items ...</DialogTrigger>
-        <DialogContent className="w-[50rem]">
-          <Input />
-        </DialogContent>
-      </Dialog>
+    <div className="relative">
+      <Search className="absolute top-1/4 left-2" size={20} />
+      <Input className="px-8" placeholder="Search for items" />
     </div>
   );
 };
