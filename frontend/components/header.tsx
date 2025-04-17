@@ -28,7 +28,7 @@ export function MainNav() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       {/* Desktop Navigation */}
-      <nav className="w-full hidden  mx-auto justify-evenly gap-4 items-center md:flex h-14">
+      <nav className="w-full hidden  mx-auto justify-between container  gap-4 items-center md:flex h-14">
         <Link href="/">
           <h2 className="text-2xl font-semibold font-stretch-50%">
             myCampusHome

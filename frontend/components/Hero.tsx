@@ -8,7 +8,7 @@ const Hero = () => {
     <div className="flex flex-col px-4 gap-6 mt-8 justify-between items-center ">
       <div className="flex mt-8 flex-col z-10">
         <div className="">
-          <h1 className="text-center z-10  md:text-5xl text-4xl max-w-3xl leading-snug">
+          <h1 className="text-center z-10 md:text-5xl text-4xl max-w-3xl leading-snug">
             Your <span className="font-bold">Go-To</span> Campus market in Kenya
             for Buying and Selling
           </h1>
@@ -29,9 +29,9 @@ const Hero = () => {
       <div className="w-full md:h-[500px] my-8 mx-auto overflow-hidden">
         <Image
           src="/hero.jpg"
-          className="object-contain rounded-xl mx-auto"
+          className="object-cover rounded-xl mx-auto"
           alt="heroimage"
-          width={1200}
+          width={1400}
           height={500}
         />
       </div>

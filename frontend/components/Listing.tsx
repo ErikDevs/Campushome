@@ -58,9 +58,9 @@ export default async function Products({
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2 lg:grid-cols-4 ">
         {products.map((product) => (
           <Link href={`product/${product.id}`} key={product.id}>
-            <div className="hover:shadow-lg border rounded-md transition-shadow">
+            <div className="hover:shadow-lg border p-2 rounded-md transition-shadow">
               {product.images?.length > 0 ? (
-                <div className="h-[12rem] flex items-center">
+                <div className="md:min-h-[200px] flex items-center">
                   <Image
                     urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}
                     src={product.images[0]}

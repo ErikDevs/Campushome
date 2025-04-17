@@ -331,7 +331,7 @@ const UserData = () => {
                       </TableCell>
 
                       <TableCell>
-                        <p className="max-w-lg overflow-x-clip">
+                        <p className="max-w-md overflow-x-clip">
                           {product.description}
                         </p>
                       </TableCell>
