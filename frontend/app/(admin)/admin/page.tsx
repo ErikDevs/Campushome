@@ -5,8 +5,8 @@ import React from "react";
 const AdminPage = () => {
   return (
     <div>
-      <ImageCleanupButton />
       <UserData />
+      <ImageCleanupButton />
     </div>
   );
 };

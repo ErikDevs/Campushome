@@ -9,6 +9,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
+import ContactSeller from "@/components/ContactSeller";
 
 interface Product {
   id: number;
@@ -41,9 +43,9 @@ const ProductPage = async ({ params }: ProductsPageProps) => {
 
   return (
     <div className="w-full mx-auto">
-      <div className="max-w-7xl flex justify-between flex-col md:flex-row mx-auto px-4 mt-16 py-8">
+      <div className="max-w-7xl flex justify-between flex-col md:flex-row mx-auto px-6 mt-16 py-8">
         {/* Product Images */}
-        <Carousel>
+        <Carousel className="md:w-[512px] w-full flex items-center">
           <CarouselContent>
             {product.images.map((image, index) => (
               <CarouselItem key={index}>
@@ -63,8 +65,8 @@ const ProductPage = async ({ params }: ProductsPageProps) => {
         </Carousel>
 
         {/* Product Info */}
-        <div className="space-y-4 mx-16">
-          <h1 className="text-3xl font-bold">{product.title}</h1>
+        <div className="space-y-4 my-8">
+          <h1 className="text-2xl font-bold">{product.title}</h1>
           <p className="text-2xl font-semibold">KES {product.price}</p>
 
           {product.university && (
@@ -81,13 +83,11 @@ const ProductPage = async ({ params }: ProductsPageProps) => {
           )}
 
           <div className="pt-4 border-t">
-            <h2 className="text-lg font-medium">Description</h2>
-            <p className="text-gray-700">{product.description}</p>
+            <h2 className="text-lg font-medium mb-4">Description</h2>
+            <p className="text-gray-700 max-w-lg">{product.description}</p>
           </div>
 
-          <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors">
-            Contact Seller
-          </button>
+          <ContactSeller />
         </div>
       </div>
     </div>

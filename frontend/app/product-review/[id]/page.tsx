@@ -51,7 +51,7 @@ const ProductReview = async ({ params }: ProductsPageProps) => {
 
   return (
     <div className="w-full mx-auto">
-      <div className="max-w-7xl flex justify-between flex-col md:flex-row mx-auto px-4 mt-16 py-8">
+      <div className="max-w-7xl flex px-6 justify-between flex-col md:flex-row gap-y-8 mx-auto py-8">
         {/* Product Images */}
         <Carousel>
           <CarouselContent>
@@ -73,7 +73,7 @@ const ProductReview = async ({ params }: ProductsPageProps) => {
         </Carousel>
 
         {/* Product Info */}
-        <div className="space-y-4 mx-16">
+        <div className="space-y-4 ">
           <h1 className="text-3xl font-bold">{product.title}</h1>
           <p className="text-2xl font-semibold">KES {product.price}</p>
 
@@ -92,7 +92,7 @@ const ProductReview = async ({ params }: ProductsPageProps) => {
 
           <div className="pt-4 border-t">
             <h2 className="text-lg font-medium">Description</h2>
-            <p className="text-gray-700">{product.description}</p>
+            <p className="text-gray-700 max-w-lg">{product.description}</p>
           </div>
 
           <div className="pt-4 border-t">

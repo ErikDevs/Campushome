@@ -67,12 +67,6 @@ const UserListing = () => {
 
   return (
     <div className="w-full">
-      <div className="mb-4">
-        <h1 className="text-2xl font-bold">Create your listing</h1>
-        <p className="text-gray-500 text-base max-w-md">
-          Enter the details about what you would like to sell
-        </p>
-      </div>
       <div className="flex justify-between gap-4">
         <div className="space-y-2">
           <h2 className="text-xl font-bold">Your Listing</h2>
@@ -91,10 +85,10 @@ const UserListing = () => {
                     <p
                       className={`${
                         item.status === "pending"
-                          ? " bg-amber-200 text-amber-600"
+                          ? "bg-amber-200 text-amber-600"
                           : item.status === "approved"
-                          ? " bg-green-200 text-green-600"
-                          : " bg-red-200 text-red-500"
+                          ? "bg-green-200 text-green-600"
+                          : "bg-red-200 text-red-500"
                       } w-fit rounded py-1 px-5 text-sm flex gap-2 items-center`}
                     >
                       Status {item.status}

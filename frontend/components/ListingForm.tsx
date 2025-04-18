@@ -124,6 +124,12 @@ export function ListingForm() {
 
   return (
     <div className="w-full">
+      <div className="mb-4">
+        <h1 className="text-2xl font-bold">Create your listing</h1>
+        <p className="text-gray-500 text-base max-w-md">
+          Enter the details about what you would like to sell
+        </p>
+      </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField

@@ -109,7 +109,7 @@ export function MainNav() {
                   onClick={() => setIsOpen(false)}
                 >
                   {session ? (
-                    <h2>{session?.user.name}</h2>
+                    <h2 className="capitalize">{session?.user.name}</h2>
                   ) : (
                     <h2>My Account</h2>
                   )}
@@ -130,7 +130,7 @@ export function MainNav() {
                   Contact Us
                 </Link>
                 <Link
-                  href="/"
+                  href="/profile"
                   className="text-muted-foreground hover:text-foreground"
                   onClick={() => setIsOpen(false)}
                 >
@@ -178,8 +178,8 @@ export function MainNav() {
                     className="flex gap-2 mt-4 items-center"
                     onClick={() => signOut()}
                   >
-                    <LogOut />
-                    Signout
+                    <LogOut size={20} />
+                    Sign Out
                   </button>
                 ) : (
                   <div className="flex flex-col gap-2">

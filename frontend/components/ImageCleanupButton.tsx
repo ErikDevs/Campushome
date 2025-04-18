@@ -19,42 +19,7 @@ export function ImageCleanupButton() {
         throw new Error(data.error || "Cleanup failed");
       }
 
-      toast.success(`Deleted ${data.stats.deletedCount} orphaned files`, {
-        action: {
-          label: "Details",
-          onClick: () =>
-            toast.info(
-              <div className="space-y-3">
-                <div>
-                  <p className="font-medium">
-                    Kept files (matching database URLs):
-                  </p>
-                  {data.sampleData.keptFiles.map((file: any, i: number) => (
-                    <div key={i} className="text-sm p-2 border rounded my-1">
-                      <p className="font-mono truncate">{file.filePath}</p>
-                      <p className="text-xs text-muted-foreground">
-                        Matches DB URL: {file.matchingDbUrl}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <p className="font-medium">Deleted files (no match in DB):</p>
-                  {data.sampleData.deletedFiles.map(
-                    (path: string, i: number) => (
-                      <p
-                        key={i}
-                        className="text-sm font-mono truncate p-2 border rounded my-1"
-                      >
-                        {path}
-                      </p>
-                    )
-                  )}
-                </div>
-              </div>
-            ),
-        },
-      });
+      toast.success(`Deleted ${data.stats.deletedCount} orphaned files`);
     } catch (error) {
       toast.error("Cleanup failed", {
         description: error instanceof Error ? error.message : "Unknown error",
@@ -65,12 +30,12 @@ export function ImageCleanupButton() {
   };
 
   return (
-    <div className="space-y-4 p-4 border rounded-lg">
+    <div className="space-y-4 mt-8 p-4 border rounded-lg">
       <Button
         onClick={handleCleanup}
         disabled={isLoading}
         variant="default"
-        className="w-full"
+        className=""
       >
         {isLoading ? "Cleaning..." : "Delete unused images"}
       </Button>
