@@ -84,7 +84,10 @@ export function MainNav() {
           <SearchItem />
         </NavigationMenu>
 
-        {session ? <UserProfile /> : <HeaderRight />}
+        <div className="flex gap-2">
+          {session ? <UserProfile /> : <HeaderRight />}
+          <ThemeToggle />
+        </div>
       </nav>
 
       {/* Mobile Navigation */}

@@ -52,7 +52,7 @@ export default async function Products({
   const { products } = await fetchProducts(currentPage, limit);
 
   return (
-    <section className="flex flex-col px-6 w-full">
+    <section id="products" className="flex flex-col px-6 w-full">
       <p className="text-slate-500 font-bold mb-4">Latest Listing</p>
       {/* Products Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2 lg:grid-cols-4 ">

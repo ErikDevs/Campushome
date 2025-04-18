@@ -21,20 +21,19 @@ const Hero = () => {
         <div className="flex w-full mx-auto justify-center my-2">
           <Link href="/">
             <Button variant="default" className="p-6 rounded-4xl ">
-              Buy Now
+              <a href="#products">Buy Now</a>
             </Button>
           </Link>
         </div>
       </div>
-      <div className="w-full md:h-[500px] my-8 mx-auto overflow-hidden">
-        <Image
-          src="/hero.jpg"
-          className="object-cover rounded-xl mx-auto"
-          alt="heroimage"
-          width={1400}
-          height={500}
-        />
-      </div>
+
+      <Image
+        src="/hero.png"
+        className="rounded-xl object-cover object-center mx-auto"
+        alt="heroimage"
+        width={2000}
+        height={10}
+      />
     </div>
   );
 };

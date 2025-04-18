@@ -13,16 +13,24 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { FcGoogle } from "react-icons/fc";
 
 const UserSignup = () => {
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>Sign up My Campus Home</CardTitle>
+        <CardTitle>My Campus Home</CardTitle>
         <CardDescription>Join us today</CardDescription>
       </CardHeader>
       <CardContent>
-        <Button>Sign up with Google</Button>
+        <Button
+          onClick={() => signIn("google", { callbackUrl: "/signin" })}
+          className="flex  w-full items-center rounded-md justify-center gap-2 border py-2 mb-4"
+        >
+          {" "}
+          <FcGoogle /> SignIn with Google
+        </Button>
         <form>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
@@ -40,11 +48,19 @@ const UserSignup = () => {
           </div>
         </form>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline">
-          <Link href="/">Cancel</Link>
-        </Button>
-        <Button>Deploy</Button>
+      <CardFooter className="flex flex-col">
+        <div className="flex w-full justify-between">
+          <Button variant="outline">
+            <Link href="/">Cancel</Link>
+          </Button>
+          <Button>Sign up</Button>
+        </div>
+        <p className="mt-4 text-sm text-gray-500">
+          Already have an account?{" "}
+          <span className="text-neutral-50">
+            <Link href="/signin">Signin here</Link>
+          </span>
+        </p>
       </CardFooter>
     </Card>
   );

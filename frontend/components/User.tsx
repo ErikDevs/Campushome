@@ -55,7 +55,6 @@ const UserProfile = () => {
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <ThemeToggle />
     </div>
   );
 };

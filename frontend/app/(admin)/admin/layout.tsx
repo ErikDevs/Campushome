@@ -5,9 +5,9 @@ import { redirect } from "next/navigation";
 import Footer from "@/components/Footer";
 import AppSidebar from "@/components/page-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import UserProfile from "@/components/User";
 import { ReactNode } from "react";
 import { authConfig } from "@/app/auth.config";
+import { MainNav } from "@/components/header";
 
 export default async function AdminLayout({
   children,
@@ -25,12 +25,7 @@ export default async function AdminLayout({
       <AppSidebar />
       <SidebarTrigger />
       <main className="w-full max-w-7xl">
-        <div className="flex justify-between w-full border-b py-4 items-center">
-          <h2>Dashboard</h2>
-          <div>
-            <UserProfile />
-          </div>
-        </div>
+        <MainNav />
         {children}
         <Footer />
       </main>
